@@ -38,6 +38,8 @@ module SmartAttributes
                                 'Number of processors'
                               when 'pbspro'
                                 'Number of CPUs on single node'
+                              when 'oar2'
+                                'Number of cores'
                               else
                                 'Number of nodes'
                               end
@@ -66,6 +68,8 @@ module SmartAttributes
                    ['-n', slots]
                  when 'fujitsu_tcs'
                    ['-L', "node=#{slots}"]
+                 when 'oar2'
+                   { resources: { cores: slots } }
                  end
         native ? { script: { native: native } } : {}
       end

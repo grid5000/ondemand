@@ -52,6 +52,8 @@ module SmartAttributes
                    ['-n', nodes]
                  when 'fujitsu_tcs'
                    ['-L', "node=#{nodes}"]
+                 when 'oar2'
+                   { resources: { nodes: nodes } }
                  end
         native ? { script: { native: native } } : {}
       end
